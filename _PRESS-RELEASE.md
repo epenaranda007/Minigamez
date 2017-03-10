@@ -18,27 +18,49 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  
+  MyMinigames 
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 
+  All types of people and of any age. Games we used to play when we are young.
+
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
 
+  The product is a site where most of the simple and old school games are. Different games like:
+    1. rock,paper,scissors against computer or friends
+    2. Card games eg. guessing or lucky 9
+    3. If I have enough time, Hack Reactor RPG game, where you are the main character and bosses are NQueens, Backbone, Angular that spits out keywords and you have to type it fast before it hits you. :D
+
+  Scores for each user will be stored in the database so you can compare it with your friends. 
+
 ## Problem ##
   > Describe the problem your product solves.
+  Bored or just wanna play again old games that we used to play.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
 
+  Products will have different kind of games that can be fun and enjoyable.
+
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+
+  GAME ON!
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
 
+  Just signup and pick the game that you want and start playing.
+
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
+  Fun games, can't stop playing. :D
+
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+
+  Why are you still reading this? Go to your favourite browser now and find www.myminigames.com :D
