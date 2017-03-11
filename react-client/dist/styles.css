@@ -232,8 +232,16 @@ Components
 }
 
 .on-click {
-  transform: scale(1.5);
-  transition: all .2s ease-in-out;
+  /*animation-duration: 3s;
+  animation-name: slidein;
+  width: 200px;
+  height: 200px;*/
+  /*transform: translateY(0);*/
+  /*transition: all .2s ease-in-out;*/
+}
+
+.hide-element {
+  visibility: hidden;
 }
 
 

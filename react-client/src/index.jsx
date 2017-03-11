@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-// import List from './components/List.jsx';
 import RPS from './components/RPS.jsx';
+// import List from './components/List.jsx';
 
 class App extends React.Component {
   constructor(props) {
