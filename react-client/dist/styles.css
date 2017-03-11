@@ -218,13 +218,17 @@ Components
 }
 
 .comp-img {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
 }
 
 .game-message {
   width: 300px;
   margin: 10px auto;
+}
+
+.h3-game-message {
+  text-align: center;
 }
 
 

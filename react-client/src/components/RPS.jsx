@@ -42,12 +42,19 @@ class RPS extends React.Component {
 
   }
 
-  onPlayerPicked(choice) {
-    var computerPicked = this.randomPick();
+  onPlayerPicked(playerChoice) {
+    var comp = this.randomPick();
+    var compPickId = this.rps[comp].id;
+    var message = '';
     // console.log(this.compChoice);
-    if (choice === this.state.compPick.id) {
-      this.setState({compPick: this.rps[computerPicked], game});
+    if (playerChoice === compPickId) {
+      message = 'DRAW!';
+    } else if (playerChoice === 'R' && compPickId=== 'S') {
+      message = 'WIN!';
+    } else {
+      message = 'LOSE!';
     }
+    this.setState({compPick: this.rps[comp], gameMessage: message});
   }
 
   randomPick() {
@@ -59,7 +66,7 @@ class RPS extends React.Component {
     return (
       <div className="RPS">
         <RPSComputer compChoice={this.state.compPick}/>
-        <div className="game-message"><h3>{this.state.gameMessage}</h3></div>
+        <div className="game-message"><h3 className="h3-game-message">{this.state.gameMessage}</h3></div>
         <RPSTable choices={this.rps} onPlayerPicked={this.onPlayerPicked.bind(this)} />
       </div>
     );
