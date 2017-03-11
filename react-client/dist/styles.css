@@ -231,7 +231,10 @@ Components
   text-align: center;
 }
 
-
+.on-click {
+  transform: scale(1.5);
+  transition: all .2s ease-in-out;
+}
 
 
 

@@ -46,7 +46,6 @@ class RPS extends React.Component {
     var comp = this.randomPick();
     var compPickId = this.rps[comp].id;
     var message = '';
-    // console.log(this.compChoice);
     if (playerChoice === compPickId) {
       message = 'DRAW!';
     } else if (playerChoice === 'R' && compPickId=== 'S') {
