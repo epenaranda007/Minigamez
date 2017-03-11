@@ -64,7 +64,7 @@ class RPS extends React.Component {
       var message = '';
 
       if (playerChoice === compPickId) {
-        message = 'Score: ' + this.highscore + ' DRAW! Click to Play Again';
+        message = 'Score: ' + this.score + ' DRAW! Click to Play Again';
       } else if (playerChoice === 'R' && compPickId=== 'S') {
         this.updateScore();
         message = 'Score: ' + this.score + ' WIN! Click to Play Again';
