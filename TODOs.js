@@ -11,10 +11,9 @@ TODOs:
 
 RSP:
 Current TODO:
-2. make an event that will trigger what the player choose
-3. create a simple random choices of rps
-4. compare the random choice and player choice
-5. display who wins
+
+1. Setup the insert user function
+2. Setup the get user function
 
 
 

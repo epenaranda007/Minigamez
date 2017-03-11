@@ -14,26 +14,30 @@ class RPS extends React.Component {
       compChoice: {
         id: 'D',
         name: 'Default',   
-        image: 'https://media4.giphy.com/media/BXJmoUgthcYFi/200w.webp#41'
+        image: '../assets/images/qmark.gif'
+        // image: 'https://media4.giphy.com/media/BXJmoUgthcYFi/200w.webp#41'
       },
       gameMessage: 'ROCK PAPER SCISSORS',
       rpsArray: [
         {
           id: 'R',
           name: 'Rock',
-          image: 'http://www.rock-paper-scissors-game.com/i/rock.png',
+          image: '../assets/images/rock.png',
+          // image: 'http://www.rock-paper-scissors-game.com/i/rock.png',
           visibility: ''
         }, 
         {
           id: 'P',
           name: 'Paper',
-          image: 'http://www.rock-paper-scissors-game.com/i/paper.png',
+          image: '../assets/images/paper.png',
+          // image: 'http://www.rock-paper-scissors-game.com/i/paper.png',
           visibility: ''
         }, 
         {
           id: 'S',
           name: 'Scissors',
-          image: 'http://www.rock-paper-scissors-game.com/i/scissors.png',
+          image: '../assets/images/scissors.png',
+          // image: 'http://www.rock-paper-scissors-game.com/i/scissors.png',
           visibility: ''
         }
       ]

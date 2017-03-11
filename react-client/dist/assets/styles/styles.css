@@ -249,9 +249,35 @@ Components
   margin-right: 30px;
 }
 
+.title-h1 {
+  display: inline-block;
+  width: 300px;
+  height: 30px;
+  mar
+}
 
+.user-div {
+  display: inline-block;
+  float: right;
+}
 
+.input-user {
+  width: 250px;
+  height: 30px;
+  border-radius: 3px;
+  margin-top: 3px;
+  margin-right: 10px;
+  font-size: 15px;
+}
 
+.login-button {
+  display: inline-block;
+  border-radius: 3px;
+  border: 1px solid;
+  color: #000000;
+  background-color: #d3e8ff;
+  padding: 3px 3px;
+}
 
 
 
