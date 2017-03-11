@@ -54,14 +54,17 @@ class App extends React.Component {
     //TODO send userdata for signin or signup
     $.ajax({
       type: "POST",
-      url: 'localhost:3000/signin',
+      url: 'http://localhost:3000/signin',
       data: JSON.stringify({username: this.state.username, password: this.state.password}),
-      // dataType: dataType, expected data
-      // contentType: content data you are sending
-      contentType: 'application/json'
+      contentType: 'application/json',
       success: (data) => {
         console.log('ajax post success!');
       },
+      error: () => {
+        console.log('error ajax request')
+      }
+      // dataType: dataType, expected data
+      // contentType: content data you are sending
     });
 
     event.preventDefault();
