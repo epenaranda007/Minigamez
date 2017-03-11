@@ -42,7 +42,6 @@ class App extends React.Component {
           <div className="nav-game"> Game 3 </div>
         </nav>
         <div className="game-area">
-          Game Area
           <RPS />
         </div>
         <div className="game-details"></div>

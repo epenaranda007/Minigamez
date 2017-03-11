@@ -244,6 +244,11 @@ Components
   visibility: hidden;
 }
 
+.score-h3 {
+  float: right;
+  margin-right: 30px;
+}
+
 
 
 

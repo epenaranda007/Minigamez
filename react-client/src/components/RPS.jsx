@@ -8,6 +8,7 @@ class RPS extends React.Component {
 
     this.played = false;
     this.highscore = 0;
+    this.score = 0;
 
     this.defaults = {
       compChoice: {
@@ -63,15 +64,30 @@ class RPS extends React.Component {
       var message = '';
 
       if (playerChoice === compPickId) {
-        message = 'DRAW! Click to Play Again';
+        message = 'Score: ' + this.highscore + ' DRAW! Click to Play Again';
       } else if (playerChoice === 'R' && compPickId=== 'S') {
-        message = 'WIN! Click to Play Again';
+        this.updateScore();
+        message = 'Score: ' + this.score + ' WIN! Click to Play Again';
+      } else if (playerChoice === 'P' && compPickId=== 'R') {
+        this.updateScore();
+        message = 'Score: ' + this.score + ' WIN! Click to Play Again';
+      } else if (playerChoice === 'S' && compPickId=== 'P') {
+        this.updateScore();
+        message = 'Score: ' + this.score + ' WIN! Click to Play Again';
       } else {
-        message = 'LOSE! Click to Play Again';
+        this.score = 0;
+        message = 'Score: ' + this.score + ' LOSE! Click to Play Again';
       }
 
       this.setState({compPick: this.rps[comp], gameMessage: message});
       this.played = true;
+    }
+  }
+
+  updateScore() {
+    this.score++;
+    if (this.score > this.highscore) {
+      this.highscore = this.score;
     }
   }
 
@@ -89,13 +105,14 @@ class RPS extends React.Component {
   }
 
   gameReset() {
-    this.played = false;
-    this.rps = JSON.parse(JSON.stringify(this.defaults.rpsArray));
-    this.setState({
-      compPick: this.defaults.compChoice,
-      gameMessage: this.defaults.gameMessage
-    });
-    console.log(this.defaults.gameMessage);
+    if(this.played) {
+      this.played = false;
+      this.rps = JSON.parse(JSON.stringify(this.defaults.rpsArray));
+      this.setState({
+        compPick: this.defaults.compChoice,
+        gameMessage: this.defaults.gameMessage
+      });
+    }
     
   }
 
@@ -103,8 +120,9 @@ class RPS extends React.Component {
   render() {
     return (
       <div className="RPS">
+        <div><h3 className="score-h3">{'HIGHSCORE: ' + this.highscore}</h3></div>
         <RPSComputer compChoice={this.state.compPick}/>
-        <div className="game-message"><h3 className="h3-game-message">{this.state.gameMessage}</h3></div>
+        <div className="game-message" onClick={() => this.gameReset()}><h3 className="h3-game-message">{this.state.gameMessage}</h3></div>
         <RPSTable choices={this.rps} onPlayerPicked={this.onPlayerPicked.bind(this)} />
       </div>
     );
