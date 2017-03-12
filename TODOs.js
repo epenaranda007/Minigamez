@@ -7,7 +7,8 @@ TODOs:
 3. Game Player in the middle
 4. Game Details on the Buttom
 
-
+DOUBLE THE ARRAY AND SHUFFLE AND ASSIGN IT TO STATE VARIABLE 
+AND MAKE IT 2D ARRAY
 
 RSP:
 Current TODO:
@@ -34,7 +35,7 @@ Technical:
 4. create a timer function
 5. reveal real value of the card and set the first card to partial variable for the first clicked card
 6. reveal 2nd clicked card, compare it to the first card clicked
-
+ 
 
 
 
