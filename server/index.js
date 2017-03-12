@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.post('/signin', handler.signinUser);
+app.post('/updatescore', handler.updateScore);
 
 app.listen(3000, function() {
   console.log('listening on port 3000!');

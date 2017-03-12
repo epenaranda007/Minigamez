@@ -1,6 +1,7 @@
 import React from 'react';
 import RPSTable from './RPSTable.jsx';
 import RPSComputer from './RPSComputer.jsx';
+import $ from 'jquery';
 
 class RPS extends React.Component {
   constructor(props) {
@@ -92,7 +93,32 @@ class RPS extends React.Component {
     this.score++;
     if (this.score > this.highscore) {
       this.highscore = this.score;
+      if(this.props.user !== '') {
+        this.updateDB();
+      }
     }
+  }
+
+  updateDB() {
+    var game = {
+      name: 'RockPaperScissor',
+      highscore: this.highscore,
+      username: this.props.user
+    };
+
+    $.ajax({
+      type: "POST",
+      url: 'http://localhost:3000/updatescore',
+      data: JSON.stringify(game),
+      contentType: 'application/json',
+      success: (data) => {
+        console.log('ajax post RPS game!: ', data);
+      },
+      error: () => {
+        console.log('error ajax request')
+      }
+    });
+
   }
 
   hideOtherChoices(id) {

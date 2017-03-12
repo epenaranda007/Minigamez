@@ -8,6 +8,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.displayUsername = '';
+
     this.state = { 
       items: [
         {name: 'Game1', description: 'Game1 description'}, 
@@ -57,6 +59,7 @@ class App extends React.Component {
       data: JSON.stringify({username: this.state.username, password: this.state.password}),
       contentType: 'application/json',
       success: (data) => {
+
         console.log('ajax post success!: ', data);
       },
       error: () => {
@@ -65,6 +68,7 @@ class App extends React.Component {
       // dataType: dataType, expected data
       // contentType: content data you are sending
     });
+    this.displayUsername = this.state.username;
     this.setState({username: '', password: ''});
     event.preventDefault();
   }
@@ -77,8 +81,9 @@ class App extends React.Component {
           <div className="user-div">
             <span>Username: </span><input className="input-user" type="text" name="username" value={this.state.username} onChange={this.handleUsername} ></input>
             <span>Password: </span><input className="input-pass" type="text" name="lastname" value={this.state.password} onChange={this.handlePassword} ></input>
-            <a className="login-button" onClick={this.signUpOrSigninUser} >Sign Up / Log In</a>
+            <a className="login-button" onClick={this.signUpOrSigninUser} >Sign In/Up</a>
           </div>
+          <div className="welcome-user">{'Welcome: ' + this.displayUsername}</div>
         </header>
         <nav className="game-list">
           <div className="nav-game"> Game 1 </div>
@@ -86,7 +91,7 @@ class App extends React.Component {
           <div className="nav-game"> Game 3 </div>
         </nav>
         <div className="game-area">
-          <RPS />
+          <RPS user={this.displayUsername} />
         </div>
         <div className="game-details"></div>
       </div>

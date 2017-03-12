@@ -253,7 +253,6 @@ Components
   display: inline-block;
   width: 300px;
   height: 30px;
-  mar
 }
 
 .user-div {
@@ -279,6 +278,9 @@ Components
   padding: 3px 3px;
 }
 
+.welcome-user {
+  
+}
 
 
 
