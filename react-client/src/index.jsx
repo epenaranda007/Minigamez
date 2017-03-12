@@ -11,11 +11,11 @@ class App extends React.Component {
     this.displayUsername = '';
 
     this.state = { 
-      items: [
-        {name: 'Game1', description: 'Game1 description'}, 
-        {name: 'Game2', description: 'Game2 description'},
-        {name: 'Game3', description: 'Game3 description'}
-      ],
+      games: {
+        rps: {name: 'RockPaperScissor', navArea: 'nav-selected', gameArea: ''}, 
+        ftp: {name: 'FindThePair', navArea: '', gameArea: 'hide-game-area'}
+        // {name: 'Game3', description: 'Game3 description'}
+      },
       username: '',
       password: ''
     };
@@ -83,15 +83,21 @@ class App extends React.Component {
             <span>Password: </span><input className="input-pass" type="text" name="lastname" value={this.state.password} onChange={this.handlePassword} ></input>
             <a className="login-button" onClick={this.signUpOrSigninUser} >Sign In/Up</a>
           </div>
-          <div className="welcome-user">{'Welcome: ' + this.displayUsername}</div>
+          <div className="welcome-user">{this.displayUsername ? 'Welcome ' + this.displayUsername : ''}</div>
         </header>
         <nav className="game-list">
-          <div className="nav-game"> Game 1 </div>
-          <div className="nav-game"> Game 2 </div>
+          <div className={'nav-game ' + this.state.games.rps.navArea }> Rock Paper Scissor </div>
+          <div className={'nav-game ' + this.state.games.ftp.navArea }> Find The Pair </div>
           <div className="nav-game"> Game 3 </div>
+          <div className="nav-space"></div>
         </nav>
         <div className="game-area">
-          <RPS user={this.displayUsername} />
+          <div className={'rps-div ' + this.state.games.rps.gameArea } >
+            <RPS user={this.displayUsername} />
+          </div>
+          <div className={'ftp-div ' + this.state.games.ftp.gameArea }>
+
+          </div>
         </div>
         <div className="game-details"></div>
       </div>
