@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import RPS from './components/RPS.jsx';
+import FTP from './components/FTP.jsx';
 // import List from './components/List.jsx';
 
 class App extends React.Component {
@@ -17,37 +18,27 @@ class App extends React.Component {
         // {name: 'Game3', description: 'Game3 description'}
       },
       username: '',
-      password: ''
+      password: '',
+      currGame: 'rps'
     };
 
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.signUpOrSigninUser = this.signUpOrSigninUser.bind(this);
+    this.onGameTabClick = this.onGameTabClick.bind(this);
   }
 
   componentDidMount() {
-    // $.ajax({
-    //   url: '/items', 
-    //   success: (data) => {
-    //     this.setState({
-    //       items: data
-    //     })
-    //   },
-    //   error: (err) => {
-    //     console.log('err', err);
-    //   }
-    // });
+
   }
 
   handleUsername(event) {
     this.setState({username: event.target.value});
-    // console.log(this.state.username);
     event.preventDefault();
   }
 
   handlePassword(event) {
     this.setState({password: event.target.value});
-    // console.log(this.state.password);
     event.preventDefault();
   }
 
@@ -73,6 +64,28 @@ class App extends React.Component {
     event.preventDefault();
   }
 
+  onGameTabClick(game) {
+    if(game === this.state.currGame) {
+      return;
+    } else if (game === 'ftp') {
+      this.setState({
+        games: {
+          rps: {navArea: '', gameArea: 'hide-game-area'},
+          ftp: {navArea: 'nav-selected', gameArea: ''}
+        },
+        currGame: game
+      });
+    } else if (game === 'rps') {
+      this.setState({
+        games: {
+          rps: {navArea: 'nav-selected', gameArea: ''},
+          ftp: {navArea: '', gameArea: 'hide-game-area'}
+        },
+        currGame: game
+      });
+    }
+  }
+
   render () {
     return (
       <div>
@@ -86,8 +99,16 @@ class App extends React.Component {
           <div className="welcome-user">{this.displayUsername ? 'Welcome ' + this.displayUsername : ''}</div>
         </header>
         <nav className="game-list">
-          <div className={'nav-game ' + this.state.games.rps.navArea }> Rock Paper Scissor </div>
-          <div className={'nav-game ' + this.state.games.ftp.navArea }> Find The Pair </div>
+          <div className={'nav-game ' + this.state.games.rps.navArea } 
+            onClick={() => this.onGameTabClick('rps')}
+          >
+            Rock Paper Scissor 
+          </div>
+          <div className={'nav-game ' + this.state.games.ftp.navArea }
+            onClick={() => this.onGameTabClick('ftp')}
+          > 
+            Find The Pair 
+          </div>
           <div className="nav-game"> Game 3 </div>
           <div className="nav-space"></div>
         </nav>
@@ -96,7 +117,7 @@ class App extends React.Component {
             <RPS user={this.displayUsername} />
           </div>
           <div className={'ftp-div ' + this.state.games.ftp.gameArea }>
-
+            <FTP user={this.displayUsername} />
           </div>
         </div>
         <div className="game-details"></div>

@@ -63,11 +63,11 @@ class RPS extends React.Component {
         type: "GET",
         url: 'http://localhost:3000/getscore/rps',
         success: (data) => {
-          console.log('ajax get RPS game!: ', data);
+          // console.log('ajax get RPS game!: ', data);
           callback(data);
         },
         error: () => {
-          console.log('error get ajax request')
+          // console.log('error get ajax request')
         }
       });
     })((data) => {
@@ -134,10 +134,10 @@ class RPS extends React.Component {
       data: JSON.stringify(game),
       contentType: 'application/json',
       success: (data) => {
-        console.log('ajax post RPS game!: ', data);
+        // console.log('ajax post RPS game!: ', data);
       },
       error: () => {
-        console.log('error ajax request')
+        // console.log('error ajax request')
       }
     });
 
