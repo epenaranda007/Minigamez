@@ -261,7 +261,7 @@ Components
   float: right;
 }
 
-.input-user {
+.input-user, .input-pass {
   width: 250px;
   height: 30px;
   border-radius: 3px;

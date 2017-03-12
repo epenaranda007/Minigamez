@@ -50,7 +50,6 @@ class App extends React.Component {
   }
 
   signUpOrSigninUser(event) {
-    console.log(this.state.username + ' ' + this.state.password);
     //TODO send userdata for signin or signup
     $.ajax({
       type: "POST",
@@ -66,7 +65,7 @@ class App extends React.Component {
       // dataType: dataType, expected data
       // contentType: content data you are sending
     });
-
+    this.setState({username: '', password: ''});
     event.preventDefault();
   }
 
@@ -77,7 +76,7 @@ class App extends React.Component {
           <h1 className="title-h1">Mini-Games</h1>
           <div className="user-div">
             <span>Username: </span><input className="input-user" type="text" name="username" value={this.state.username} onChange={this.handleUsername} ></input>
-            <span>Password: </span><input className="input-user" type="text" name="lastname" value={this.state.password} onChange={this.handlePassword} ></input>
+            <span>Password: </span><input className="input-pass" type="text" name="lastname" value={this.state.password} onChange={this.handlePassword} ></input>
             <a className="login-button" onClick={this.signUpOrSigninUser} >Sign Up / Log In</a>
           </div>
         </header>

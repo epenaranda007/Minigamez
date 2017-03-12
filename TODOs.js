@@ -12,6 +12,8 @@ TODOs:
 RSP:
 Current TODO:
 clear the data after signin or signup
+hide the user input data div
+show welcome div
 
 
 
