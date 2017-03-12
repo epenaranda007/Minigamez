@@ -172,7 +172,7 @@ class RPS extends React.Component {
   render() {
     return (
       <div className="RPS">
-        <div><h3 className="score-h3">{'HIGHSCORE: ' + this.state.highscore}</h3></div>
+        <div><h3 className="score-h3">{'LONGEST WIN STREAK: ' + this.state.highscore}</h3></div>
         <RPSComputer compChoice={this.state.compPick}/>
         <div className="game-message" onClick={() => this.gameReset()}><h3 className="h3-game-message">{this.state.gameMessage}</h3></div>
         <RPSTable choices={this.rps} onPlayerPicked={this.onPlayerPicked.bind(this)} />
