@@ -49,9 +49,30 @@ class RPS extends React.Component {
 
     this.state = {
       compPick: this.defaults.compChoice,
-      gameMessage: this.defaults.gameMessage
+      gameMessage: this.defaults.gameMessage,
+      highscore: 0
     };
 
+  }
+
+  componentDidMount() {
+    //invokes to get the highest score for this game
+    //wraps it in ES6 function to immediate invoke it with ES6 anon function callback
+    ((callback) => {
+      $.ajax({
+        type: "GET",
+        url: 'http://localhost:3000/getscore/rps',
+        success: (data) => {
+          console.log('ajax get RPS game!: ', data);
+          callback(data);
+        },
+        error: () => {
+          console.log('error get ajax request')
+        }
+      });
+    })((data) => {
+      this.setState({highscore: data.highscore});
+    }); 
   }
 
   randomPick() {
@@ -91,8 +112,9 @@ class RPS extends React.Component {
 
   updateScore() {
     this.score++;
-    if (this.score > this.highscore) {
-      this.highscore = this.score;
+    if (this.score > this.state.highscore) {
+      this.state.highscore = this.score;
+      //wont update highscore if no user logged
       if(this.props.user !== '') {
         this.updateDB();
       }
@@ -102,7 +124,7 @@ class RPS extends React.Component {
   updateDB() {
     var game = {
       name: 'RockPaperScissor',
-      highscore: this.highscore,
+      highscore: this.state.highscore,
       username: this.props.user
     };
 
@@ -150,7 +172,7 @@ class RPS extends React.Component {
   render() {
     return (
       <div className="RPS">
-        <div><h3 className="score-h3">{'HIGHSCORE: ' + this.highscore}</h3></div>
+        <div><h3 className="score-h3">{'HIGHSCORE: ' + this.state.highscore}</h3></div>
         <RPSComputer compChoice={this.state.compPick}/>
         <div className="game-message" onClick={() => this.gameReset()}><h3 className="h3-game-message">{this.state.gameMessage}</h3></div>
         <RPSTable choices={this.rps} onPlayerPicked={this.onPlayerPicked.bind(this)} />

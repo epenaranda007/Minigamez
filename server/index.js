@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/../react-client/dist'));
 
+app.get('/getscore/rps', handler.getHighestScore);
 app.post('/signin', handler.signinUser);
 app.post('/updatescore', handler.updateScore);
 
