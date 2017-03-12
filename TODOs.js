@@ -11,9 +11,7 @@ TODOs:
 
 RSP:
 Current TODO:
-
-1. Setup the insert user function
-2. Setup the get user function
+clear the data after signin or signup
 
 
 

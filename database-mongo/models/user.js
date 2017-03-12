@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require('../');
 
 var userSchema = mongoose.Schema({
   username: String,

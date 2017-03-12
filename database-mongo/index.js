@@ -12,7 +12,7 @@ db.once('open', function() {
 });
 
 
-module.exports = db;
+module.exports = mongoose;
 
 
 

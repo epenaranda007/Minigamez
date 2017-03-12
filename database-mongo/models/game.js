@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require('../');
 
 var gameSchema = mongoose.Schema({
   name: String,

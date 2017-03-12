@@ -58,7 +58,7 @@ class App extends React.Component {
       data: JSON.stringify({username: this.state.username, password: this.state.password}),
       contentType: 'application/json',
       success: (data) => {
-        console.log('ajax post success!');
+        console.log('ajax post success!: ', data);
       },
       error: () => {
         console.log('error ajax request')
