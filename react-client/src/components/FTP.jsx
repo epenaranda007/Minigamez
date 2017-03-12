@@ -48,6 +48,11 @@ class FTP extends React.Component {
         front: '../assets/images/jack_of_spades2.png',
         back: '../assets/images/red_joker.png'
       },
+      {
+        code: 'QH',
+        front: '../assets/images/queen_of_hearts2.png',
+        back: '../assets/images/red_joker.png'
+      },
 
     ]; 
 
@@ -62,21 +67,22 @@ class FTP extends React.Component {
 
   }
 
-  componentDidMount() {
+  componentWillMount() {
     // (_.shuffle(this.allCards.slice().concat(this.allCards.slice()))), //doubles the array and shuffle them
     var shuffledCards = _.shuffle(this.allCards.slice().concat(this.allCards.slice()));
-    console.log(shuffledCards);
+    // console.log(shuffledCards);
     var grid = [];
-    for (var row = 0, curr = 0; row < 4; row++) {
+    for (var row = 0, curr = 0; row < 3; row++) {
       var arr = [];
-      for (var col = 0; col < 4; col++, curr++) {
+      for (var col = 0; col < 6; col++, curr++) {
         arr[col] = shuffledCards[curr];
       }
       grid.push(arr);
     }
 
-    console.log(grid);
-    // this.setState({gameCards: shuffledCards});
+    // console.log(grid);
+
+    this.setState({gameCards: grid});
     // console.log(this.state.gameCards);
   }
 
