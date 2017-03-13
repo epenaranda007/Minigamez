@@ -72,7 +72,7 @@ class FTP extends React.Component {
       bestTime: 0,
       timer: 0,
       gameMessage: '',
-      currSolved: ''
+      solved: 0
     };
 
     this.openCardClick = this.openCardClick.bind(this);
@@ -104,9 +104,26 @@ class FTP extends React.Component {
   }
 
   openCardClick(card) {
-    console.log('openCardClick');
-    card.show = true;
-    this.setState({firstCard: card});
+    // console.log('openCardClick');
+    if (this.state.firstCard && this.state.secondCard) {
+      if (this.state.firstCard.code === this.state.secondCard.code) {
+         console.log('2nd if: inner 1st if');
+        this.setState({firstCard: null, secondCard: null, solved: (this.state.solved + 1)});
+      } else {
+        console.log('2nd if: inner else');
+        this.state.firstCard.show = false;
+        this.state.secondCard.show = false;        
+        this.setState({firstCard: null, secondCard: null});
+      }
+    } else if (!this.state.firstCard) {
+      console.log('first if');
+      card.show = true;
+      this.setState({firstCard: card});
+    } else if (this.state.firstCard) {
+      console.log('2nd if');
+      card.show = true;
+      this.setState({secondCard: card});
+    } 
   }
 
 
