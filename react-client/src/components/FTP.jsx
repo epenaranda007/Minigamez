@@ -11,47 +11,56 @@ class FTP extends React.Component {
       {
         code: 'KH',
         front: '../assets/images/king_of_hearts2.png',
-        back: '../assets/images/red_joker.png'
+        back: '../assets/images/red_joker.png',
+        show: false
       },
       {
         code: 'KD',
         front: '../assets/images/king_of_diamonds2.png',
-        back: '../assets/images/red_joker.png'
+        back: '../assets/images/red_joker.png',
+        show: false
       },
       {
         code: 'KC',
         front: '../assets/images/king_of_clubs2.png',
-        back: '../assets/images/red_joker.png'
+        back: '../assets/images/red_joker.png',
+        show: false
       },
       {
         code: 'KS',
         front: '../assets/images/king_of_spades2.png',
-        back: '../assets/images/red_joker.png'
+        back: '../assets/images/red_joker.png',
+        show: false
       },
       {
         code: 'JC',
         front: '../assets/images/jack_of_clubs2.png',
-        back: '../assets/images/red_joker.png'
+        back: '../assets/images/red_joker.png',
+        show: false
       },
       {
         code: 'JD',
         front: '../assets/images/jack_of_diamonds2.png',
-        back: '../assets/images/red_joker.png'
+        back: '../assets/images/red_joker.png',
+        show: false
       },
       {
         code: 'JH',
         front: '../assets/images/jack_of_hearts2.png',
-        back: '../assets/images/red_joker.png'
+        back: '../assets/images/red_joker.png',
+        show: false
       },
       {
         code: 'JS',
         front: '../assets/images/jack_of_spades2.png',
-        back: '../assets/images/red_joker.png'
+        back: '../assets/images/red_joker.png',
+        show: false
       },
       {
         code: 'QH',
         front: '../assets/images/queen_of_hearts2.png',
-        back: '../assets/images/red_joker.png'
+        back: '../assets/images/red_joker.png',
+        show: false
       },
 
     ]; 
@@ -62,15 +71,23 @@ class FTP extends React.Component {
       secondCard: null,
       bestTime: 0,
       timer: 0,
-      gameMessage: ''
+      gameMessage: '',
+      currSolved: ''
     };
+
+    this.openCardClick = this.openCardClick.bind(this);
 
   }
 
   componentWillMount() {
     // (_.shuffle(this.allCards.slice().concat(this.allCards.slice()))), //doubles the array and shuffle them
-    var shuffledCards = _.shuffle(this.allCards.slice().concat(this.allCards.slice()));
-    // console.log(shuffledCards);
+    var shuffled = _.shuffle(this.allCards.slice().concat(this.allCards.slice()));
+    //clone each objects in the array
+    var shuffledCards = shuffled.map(
+      (obj) => {
+        return Object.assign({}, obj);
+      });
+
     var grid = [];
     for (var row = 0, curr = 0; row < 3; row++) {
       var arr = [];
@@ -86,12 +103,25 @@ class FTP extends React.Component {
     // console.log(this.state.gameCards);
   }
 
+  openCardClick(card) {
+    console.log('openCardClick');
+    card.show = true;
+    this.setState({firstCard: card});
+  }
+
+
+
+
+
+
   render() {
     return (
       <div className="FTP">
         <div><h3 className="besttime-h3">BEST TIME: {this.state.bestTime} Second(s)</h3></div>
         <div className="game-message-ftp">TEST GAME MESSAGE</div>
-        <FTPTable cards={this.state.gameCards} />
+        <FTPTable cards={this.state.gameCards} 
+          clickCard={this.openCardClick}
+        />
       </div>
     );
   }

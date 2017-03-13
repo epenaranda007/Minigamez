@@ -4,7 +4,7 @@ import FTPRow from './FTPRow.jsx';
 var FTPTable = (props) => (
   <table className="ftp-table">
     <tbody>
-    {props.cards.map( row => <FTPRow rowCards={row} />)}
+    {props.cards.map( row => <FTPRow rowCards={row} clickCard={props.clickCard} />)}
     </tbody>
   </table>
 

@@ -13,9 +13,9 @@ class FTPCard extends React.Component {
   render() {
 
     return (
-      <td className="ftp-td">
+      <td className="ftp-td" onClick={() => this.props.clickCard(this.props.card)} >
         <img className="ftp-img" 
-          src={this.props.card.back}
+          src={this.props.card.show ? this.props.card.front : this.props.card.back}
         />
       </td>
     );

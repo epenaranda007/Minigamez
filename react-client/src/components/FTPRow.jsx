@@ -5,7 +5,7 @@ var FTPRow = (props) => (
   <tr className="ftp-tr">
     {
       props.rowCards.map(
-        card => <FTPCard card={card} />
+        card => <FTPCard card={card} clickCard={props.clickCard} />
       )
     }
   </tr>
