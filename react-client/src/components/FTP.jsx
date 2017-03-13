@@ -96,31 +96,26 @@ class FTP extends React.Component {
       }
       grid.push(arr);
     }
-
-    // console.log(grid);
-
     this.setState({gameCards: grid});
-    // console.log(this.state.gameCards);
   }
 
   openCardClick(card) {
-    // console.log('openCardClick');
     if (this.state.firstCard && this.state.secondCard) {
       if (this.state.firstCard.code === this.state.secondCard.code) {
-         console.log('2nd if: inner 1st if');
-        this.setState({firstCard: null, secondCard: null, solved: (this.state.solved + 1)});
+        if(this.state.solved === 8) {
+          this.setState({firstCard: null, secondCard: null, gameMessage: 'CONGRATULATIONS!',solved: (this.state.solved + 1)});          
+        } else{
+          this.setState({firstCard: null, secondCard: null, solved: (this.state.solved + 1)});
+        }
       } else {
-        console.log('2nd if: inner else');
         this.state.firstCard.show = false;
         this.state.secondCard.show = false;        
         this.setState({firstCard: null, secondCard: null});
       }
     } else if (!this.state.firstCard) {
-      console.log('first if');
       card.show = true;
       this.setState({firstCard: card});
     } else if (this.state.firstCard) {
-      console.log('2nd if');
       card.show = true;
       this.setState({secondCard: card});
     } 
@@ -135,7 +130,7 @@ class FTP extends React.Component {
     return (
       <div className="FTP">
         <div><h3 className="besttime-h3">BEST TIME: {this.state.bestTime} Second(s)</h3></div>
-        <div className="game-message-ftp">TEST GAME MESSAGE</div>
+        <div className="game-message-ftp"><h2 className="game-message-h2">{this.state.gameMessage}</h2></div>
         <FTPTable cards={this.state.gameCards} 
           clickCard={this.openCardClick}
         />
